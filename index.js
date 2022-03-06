@@ -9,21 +9,53 @@ const questions = () =>
       type: "input",
       name: "author",
       message: "What is the author's name?",
+      validate: author => {
+        if(author){
+          return true;
+        } else {
+          console.log('Please enter author!');
+          return false
+        }
+      }
     },
     {
       type: "input",
       name: "username",
       message: "What is your GitHub username?",
+      validate: username => {
+        if(username){
+          return true;
+        } else {
+          console.log('Please enter Github username!');
+          return false
+        }
+      }
     },
     {
       type: "input",
       name: "email",
       message: "What is your email address?",
+      validate: email => {
+        if(email){
+          return true;
+        } else {
+          console.log('Please enter your email!');
+          return false
+        }
+      }
     },
     {
       type: "input",
       name: "title",
       message: "What is your project title?",
+      validate: title => {
+        if(title){
+          return true;
+        } else {
+          console.log('Please enter project title!');
+          return false
+        }
+      }
     },
     {
       type: "input",
