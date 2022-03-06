@@ -140,14 +140,5 @@ generateMD(data)))
   .then(() => console.log('Sucess'))
   .catch((err) => console.error(err));
 
-  // Function to initialize the app
-function init() {
-  return inquirer.prompt(questions);
-}
 
-// Function call to initialize app
-init()
-  .then((projectData) => {
-    return generateMarkdown(projectData);
-  })
-  .then((markdown) => writeToFile('README.md', markdown));
+  
