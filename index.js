@@ -89,3 +89,9 @@ If you have any questions contact me on [GitHub](https://github.com/${data.usern
 ${data.author} at ${data.email}  
  `;
 }
+
+questions()
+.then((data) => writeFileAsync('generatedREADME.md',
+generateMD(data)))
+  .then(() => console.log(Sucess))
+  .catch((err) => console.error(err))
