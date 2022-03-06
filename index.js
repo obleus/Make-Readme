@@ -1,10 +1,10 @@
 const fs = require("fs");
-const util = requires("util");
+const util = require("util");
 const inquirer = require("inquirer");
 
 const writeFileAsync = util.promisify(fs.writeFile);
-const questions = () => {
-  return inquirer.prompt([
+const questions = () => 
+  inquirer.prompt([
     {
       type: "input",
       name: "author",
@@ -58,9 +58,21 @@ const questions = () => {
         "What does the user need to know about contributing to the repo?",
     },
   ]);
-};
 
 function generateMD(data) {
+ 
+  let badge = "";
+    if(data.license == "MIT"){
+        badge = "![License](https://img.shields.io/static/v1?label=License&message=MIT&color=blueviolet&style=plastic)"
+    }else if (data.license == "APACHE 2.0"){
+        badge = "![License](https://img.shields.io/static/v1?label=License&message=APACHE2.0&color=blueviolet&style=plastic)"
+    }else if (data.license == "GPL 3.0"){
+        badge = "![License](https://img.shields.io/static/v1?label=License&message=GPL3.0&color=blueviolet&style=plastic)"
+    }else if (data.license == "BSD 3"){
+        badge = "![License](https://img.shields.io/static/v1?label=License&message=BSD3&color=blueviolet&style=plastic)"
+    }
+
+
   return `# ${data.title}  
 ${badge}
 ${data.description}
@@ -87,11 +99,11 @@ In order to test open the console and run the following:
 ### Questions:
 If you have any questions contact me on [GitHub](https://github.com/${data.username}) or contact 
 ${data.author} at ${data.email}  
- `;
+ `
 }
 
 questions()
 .then((data) => writeFileAsync('generatedREADME.md',
 generateMD(data)))
-  .then(() => console.log(Sucess))
-  .catch((err) => console.error(err))
+  .then(() => console.log('Sucess'))
+  .catch((err) => console.error(err));
